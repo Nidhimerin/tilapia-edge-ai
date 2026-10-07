@@ -18,7 +18,8 @@ __pycache__/
 models/
 
 # Datasets, Frames, & Media Files (Large Files)
-data/
+data/raw/
+dataset/
 dataset_raw/
 footage/
 frames_test/
