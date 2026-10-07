@@ -1,0 +1,43 @@
+# Python Virtual Environment
+venv/
+env/
+.venv/
+
+# Python Cache & Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Model Weights & Checkpoints (YOLO / PyTorch)
+*.pt
+*.pth
+*.onnx
+*.engine
+*.weights
+models/
+
+# Datasets, Frames, & Media Files (Large Files)
+data/
+dataset_raw/
+footage/
+frames_test/
+frames_train/
+batches/
+*.zip
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Execution Outputs & Generated Results
+runs/
+outputs/
+detection_check/
+detection_summary.csv
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
