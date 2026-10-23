@@ -1,0 +1,11 @@
+{
+  "feed_time": 3.0,
+  "threshold": 0.5504096360534687,
+  "n_baseline_samples": 16,
+  "onset_latency_s": 1.1945919132149907,
+  "peak_value": 17.18472993834739,
+  "time_to_peak_s": 26.362143392504933,
+  "duration_s": 1.5979397764628516,
+  "decline_rate_per_s": -8.448047932989912,
+  "note": "Single feeding video: proof of concept only. Thresholds fixed in rubric."
+}
