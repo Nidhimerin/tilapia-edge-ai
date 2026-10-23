@@ -37,3 +37,24 @@ The fine-tuned model's detection metrics improved, but its counting MAE was wors
 4. Reassess counting MAE after annotation verification.
 
 **Note:** These results are preliminary and do not establish final deployment performance.
+
+### Verified Fish-Counting Evaluation
+
+**Dataset:** 9 validation images  
+**Ground-truth count:** 63 fish instances  
+**Metric:** Mean Absolute Error (MAE), measured in fish per image.
+
+| Model | Best tested confidence | MAE |
+|---|---:|---:|
+| Original | 0.10 | 2.67 |
+| Fine-tuned | 0.15 | 3.22 |
+
+**Observations**
+- The original model achieved the lowest observed counting MAE at a confidence threshold of 0.10.
+- The fine-tuned model achieved a lower MAE than the original at confidence thresholds 0.15, 0.20, 0.30, and 0.40.
+- At confidence 0.25, both models had the same MAE.
+- These results are preliminary because the evaluation uses only nine validation images.
+
+**Conclusion:** Fine-tuning has not yet demonstrated a lower best-observed counting MAE than the original model. Additional evaluation on independent tank images is needed before drawing broader conclusions.
+
+**Reproducibility note:** Confirm that the predictions and MAE calculations were generated using the manually verified ground-truth counts before treating these figures as final.
