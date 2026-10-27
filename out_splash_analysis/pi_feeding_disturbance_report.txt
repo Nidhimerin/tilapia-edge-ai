@@ -1,0 +1,29 @@
+PI CAMERA FEEDING-EVENT DISTURBANCE REPORT
+============================================
+Generated: 2026-10-27 20:03
+Video: pi_feeding_test.mp4
+Method: frame-to-frame grayscale change score
+
+Purpose:
+Compare visible image disturbance near the feeder outlet
+with disturbance in a separate region away from the outlet.
+
+Results (mean score in 5-second windows):
+
+Event 1: video time 670s (11:10)
+Near outlet: before=0.0362, after=0.0936, change=0.0574
+Away from outlet: before=0.0076, after=0.0432, change=0.0356
+
+Event 2: video time 680s (11:20)
+Near outlet: before=0.0900, after=0.0841, change=-0.0059
+Away from outlet: before=0.0275, after=0.0538, change=0.0263
+
+Interpretation and limitations:
+- A higher score indicates more frame-to-frame visual change.
+- Water flow, splashing, lighting, and fish movement can all affect it.
+- This is a visual disturbance proxy, not a validated feeding-response
+  or appetite measurement, and it does not prove fish consumed the feed.
+- The two events are only 10 seconds apart, so interpret their results
+  cautiously; nearby activity from one event may affect the next.
+- Validate against video observations and manual annotations before
+  making biological claims.

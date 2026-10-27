@@ -1,0 +1,13 @@
+Tilapia Feeding-Response Daily Summary
+
+Analysis reliability: SUITABLE FOR PRELIMINARY INTERPRETATION
+Valid post-feeding signal: 100.0%
+The analysis passed its configured reliability checks. These checks do not by themselves establish biological validity.
+Peak behavioural response index: 0.89.
+Time to peak after feeding: 3.98 s.
+Estimated response duration: 2.00 s.
+Estimated decline slope: 0.017 index units/s.
+
+Limitations:
+The response index is a heuristic derived from visible behaviour. It is not a validated appetite, stress, disease or satiation measure.
+Interpret trends only after checking detections and comparing multiple feeding events.

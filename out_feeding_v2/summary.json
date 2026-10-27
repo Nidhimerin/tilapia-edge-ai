@@ -1,0 +1,21 @@
+{
+  "feed_time": 3.5,
+  "baseline_too_short": true,
+  "threshold": 0.6067640890134524,
+  "n_baseline_samples": 7,
+  "post_feed_valid_fraction": 1.0,
+  "reliable": false,
+  "onset_latency_s": null,
+  "peak_value": null,
+  "time_to_peak_s": null,
+  "duration_s": null,
+  "decline_rate_per_s": null,
+  "unvalidated_values": {
+    "onset_latency_s": 3.251222765110387,
+    "peak_value": 2.5426008367128072,
+    "time_to_peak_s": 4.80919724936663,
+    "duration_s": 2.596624140427072,
+    "decline_rate_per_s": -0.6283287054355952
+  },
+  "note": "Single feeding video: proof of concept only. The response index is heuristic, not a validated appetite or satiation measure."
+}

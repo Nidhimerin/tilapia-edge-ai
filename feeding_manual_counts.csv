@@ -1,0 +1,11 @@
+
+frame,time_s,manual_count,predicted_count,false_positives,missed_fish,duplicate_boxes,notes
+feeding_test_video_00000.jpg,0,3,7,3,0,1
+feeding_test_video_00120.jpg,2,4,1,1,4,0
+feeding_test_video_00360.jpg,6,5,5,2,2,0
+feeding_test_video_00600.jpg,10,8,7,2,3,1
+feeding_test_video_00840.jpg,14,7,8,0,0,1
+feeding_test_video_01020.jpg,17,6,7,2,1,0
+feeding_test_video_01080.jpg,18,7,3,0,4,0
+feeding_test_video_01200.jpg,20,7,8,1,0,0
+feeding_test_video_01320.jpg,22,6,11,5,1,4

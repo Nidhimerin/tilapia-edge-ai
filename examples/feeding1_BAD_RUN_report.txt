@@ -1,0 +1,9 @@
+Tilapia Feeding-Response Daily Summary
+
+Analysis reliability: UNRELIABLE — interpret with caution
+The pre-feeding baseline was too short for reliable threshold estimation.
+Onset, peak, duration and decline measurements are not reported as validated results. Check detector performance, video quality and baseline duration before interpretation.
+
+Limitations:
+The response index is a heuristic derived from visible behaviour. It is not a validated appetite, stress, disease or satiation measure.
+Interpret trends only after checking detections and comparing multiple feeding events.
