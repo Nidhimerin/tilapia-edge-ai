@@ -1,0 +1,34 @@
+# /etc/systemd/system/tilapia-health.service
+[Unit]
+Description=Tilapia Pi health logger
+After=multi-user.target
+
+[Service]
+Type=simple
+User=piadmin
+WorkingDirectory=/home/piadmin/tank
+ExecStart=/home/piadmin/tilapia-venv/bin/python /home/piadmin/tank/health_logger.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/tilapia-dashboard.service
+[Unit]
+Description=Tilapia Streamlit dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=piadmin
+WorkingDirectory=/home/piadmin/tank
+ExecStart=/home/piadmin/tilapia-venv/bin/streamlit run /home/piadmin/tank/dashboard.py --server.address 0.0.0.0 --server.port 8501 --server.headless true --browser.gatherUsageStats false
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+enabled
+enabled

@@ -42,3 +42,5 @@ detection_summary.csv
 .idea/
 .DS_Store
 Thumbs.db
+*.bin
+*.mp4

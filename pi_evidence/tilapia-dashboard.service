@@ -1,0 +1,15 @@
+[Unit]
+Description=Tilapia Streamlit dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=piadmin
+WorkingDirectory=/home/piadmin/tank
+ExecStart=/home/piadmin/tilapia-venv/bin/streamlit run /home/piadmin/tank/dashboard.py --server.address 0.0.0.0 --server.port 8501 --server.headless true --browser.gatherUsageStats false
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Tilapia Pi health logger
+After=multi-user.target
+
+[Service]
+Type=simple
+User=piadmin
+WorkingDirectory=/home/piadmin/tank
+ExecStart=/home/piadmin/tilapia-venv/bin/python /home/piadmin/tank/health_logger.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

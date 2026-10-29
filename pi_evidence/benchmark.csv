@@ -1,0 +1,4 @@
+video,imgsz,threads,frames,avg_ms,fps,end_temp_c
+feeding_1620.mp4,640,4,61,433.4,2.31,60.861
+day25.mp4,640,4,121,412.5,2.42,64.27
+day25.mp4,640,4,1200,352.0,2.84,72.549

@@ -1,0 +1,19 @@
+== Health log ==
+rows: 3309  span: 2026-10-26 23:32:07 -> 2026-10-30 01:58:58
+continuously logged hours (gaps <60 s): 9.1
+gaps >60 s: 12  (largest 14.5 h)
+reboots detected (uptime reset): 21
+temp C  min/mean/max: 37.0 / 44.0 / 63.3
+cpu %   mean/max: 1.2 / 82.9   ram % max: 18.2
+throttled_hex counts:
+   0x0: 3309 rows (100.0%)
+
+== Benchmark (benchmark.csv) ==
+           video  imgsz  threads  frames  avg_ms  fps  end_temp_c
+feeding_1620.mp4    640        4      61   433.4 2.31      60.861
+       day25.mp4    640        4     121   412.5 2.42      64.270
+       day25.mp4    640        4    1200   352.0 2.84      72.549
+
+== Inference latency (counts.csv) ==
+day25.mp4: n=1200  infer_ms median=353  p95=360  temp 46-74 C
+correlation(temp, infer_ms) = 0.60  (n=1200)
