@@ -16,6 +16,7 @@ COLUMNS = [
     "glare_frac",
     "valid_frac",
     "sharpness",
+    "global_shift",
 ]
 
 
@@ -198,10 +199,12 @@ def main():
                 interpolation=cv2.INTER_AREA,
             )
 
+            bad = gray >= glare_threshold
             valid = gray < glare_threshold
             glare_frac = float(1.0 - valid.mean())
             valid_frac = float(valid.mean())
             sharpness = float(cv2.Laplacian(gray, cv2.CV_64F).var())
+            global_shift = float("nan")
 
             row = {
                 "time_s": round(frame_index / fps, 3),
@@ -212,27 +215,35 @@ def main():
                 "glare_frac": glare_frac,
                 "valid_frac": valid_frac,
                 "sharpness": sharpness,
+                "global_shift": global_shift,
             }
 
             if previous_gray is not None:
-                pair_valid = valid & previous_valid
-                diff = cv2.absdiff(gray, previous_gray)
+                prev_gray = previous_gray
+                valid = ~bad
+                flow = cv2.calcOpticalFlowFarneback(prev_gray, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+
+                # global (camera) motion = median flow over valid pixels
+                gx = float(np.median(flow[..., 0][valid])) if valid.any() else 0.0
+                gy = float(np.median(flow[..., 1][valid])) if valid.any() else 0.0
+                global_shift = float(np.hypot(gx, gy))
+
+                # flow with the camera motion removed
+                mag = np.sqrt((flow[..., 0] - gx) ** 2 + (flow[..., 1] - gy) ** 2)
+
+                # align previous frame to the current one before differencing
+                M = np.float32([[1, 0, gx], [0, 1, gy]])
+                prev_aligned = cv2.warpAffine(prev_gray, M, (gray.shape[1], gray.shape[0]),
+                                              borderMode=cv2.BORDER_REPLICATE)
+                diff = cv2.absdiff(gray, prev_aligned).astype(np.float32)
                 diff_signal = (diff > 20).astype(np.float32)
 
-                flow = cv2.calcOpticalFlowFarneback(
-                    previous_gray, gray, None,
-                    pyr_scale=0.5, levels=2, winsize=11,
-                    iterations=2, poly_n=5, poly_sigma=1.1, flags=0
-                )
-                flow_mag = np.sqrt(
-                    flow[..., 0] ** 2 + flow[..., 1] ** 2
-                )
-
+                pair_valid = valid & previous_valid
                 row["flow_near"] = mean_or_nan(
-                    flow_mag, pair_valid & near_small
+                    mag, pair_valid & near_small
                 )
                 row["flow_away"] = mean_or_nan(
-                    flow_mag, pair_valid & away_small
+                    mag, pair_valid & away_small
                 )
                 row["diff_near"] = mean_or_nan(
                     diff_signal, pair_valid & near_small
@@ -240,6 +251,7 @@ def main():
                 row["diff_away"] = mean_or_nan(
                     diff_signal, pair_valid & away_small
                 )
+                row["global_shift"] = global_shift
 
             rows.append(row)
             previous_gray = gray.copy()
